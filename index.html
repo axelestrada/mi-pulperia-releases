@@ -1,101 +1,420 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Pulpería</title>
-    <!-- Tailwind CSS CDN -->
+
+
+    <title>Mi Pulpería — Punto de venta para tu negocio</title>
+
+    <meta name="description"
+        content="Mi Pulpería es un sistema de punto de venta para pequeños comercios. Administra productos, inventario, ventas, clientes y fiado desde Windows.">
+
+    <meta name="theme-color" content="#2563eb">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
-        /* Patrón de cuadrícula tenue de fondo */
         .bg-grid-pattern {
             background-color: #f8fafc;
-            background-image: 
+            background-image:
                 linear-gradient(to right, rgba(203, 213, 225, 0.35) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(203, 213, 225, 0.35) 1px, transparent 1px);
             background-size: 32px 32px;
         }
 
-        /* Suave resplandor azulado de fondo */
         .bg-radial-glow {
-            background: radial-gradient(circle at 50% 35%, rgba(224, 242, 254, 0.8) 0%, rgba(248, 250, 252, 0) 70%);
+            background:
+                radial-gradient(circle at 50% 25%,
+                    rgba(219, 234, 254, 0.9) 0%,
+                    rgba(239, 246, 255, 0.45) 35%,
+                    rgba(248, 250, 252, 0) 72%);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
     </style>
-</head>
-<body class="bg-grid-pattern text-slate-800 font-sans h-dvh min-h-dvh flex flex-col justify-between overflow-hidden relative select-none">
-    
-    <!-- Capa del resplandor de fondo -->
-    <div class="absolute inset-0 bg-radial-glow pointer-events-none z-0"></div>
 
-    <!-- Header solo con Logo e Icono en Fondo Negro -->
-    <header class="relative z-10 w-full pt-8 px-4 text-center">
-        <div class="inline-flex items-center gap-3">
-            <!-- Icono SVG en fondo negro -->
-            <div class="bg-black p-2.5 rounded-2xl shadow-lg flex items-center justify-center w-12 h-12">
-                <svg class="w-7 h-7" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <title>shopping_bag_2_fill</title>
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="Business" transform="translate(-960.000000, -48.000000)" fill-rule="nonzero">
-                                <g id="shopping_bag_2_fill" transform="translate(960.000000, 48.000000)">
-                                    <path d="M24,0 L24,24 L0,24 L0,0 L24,0 Z M12.5934901,23.257841 L12.5819402,23.2595131 L12.5108777,23.2950439 L12.4918791,23.2987469 L12.4918791,23.2987469 L12.4767152,23.2950439 L12.4056548,23.2595131 C12.3958229,23.2563662 12.3870493,23.2590235 12.3821421,23.2649074 L12.3780323,23.275831 L12.360941,23.7031097 L12.3658947,23.7234994 L12.7357139,23.7357139 L12.4804777,23.8096931 L12.4953491,23.8136134 L12.4953491,23.8136134 L12.5071152,23.8096931 L12.6106902,23.7357139 L12.6232938,23.7196733 L12.6232938,23.7196733 L12.6266527,23.7031097 L12.609561,23.275831 C12.6075724,23.2657013 12.6010112,23.2592993 12.5934901,23.257841 L12.5934901,23.257841 Z M12.8583906,23.1452862 L12.8445485,23.1473072 L12.6598443,23.2396597 L12.6498822,23.2499052 L12.6498822,23.2499052 L12.6471943,23.2611114 L12.6650943,23.6906389 L12.6699349,23.7034178 L12.6699349,23.7034178 L12.678386,23.7104931 L12.8793402,23.8032389 C12.8914285,23.8068999 12.9022333,23.8029875 12.9078286,23.7952264 L12.9118235,23.7811639 L12.8776777,23.1665331 C12.8752882,23.1545897 12.8674102,23.1470016 12.8583906,23.1452862 L12.8583906,23.1452862 Z M12.1430473,23.1473072 C12.1332178,23.1423925 12.1221763,23.1452606 12.1156365,23.1525954 L12.1099173,23.1665331 L12.0757714,23.7811639 C12.0751323,23.7926639 12.0828099,23.8018602 12.0926481,23.8045676 L12.108256,23.8032389 L12.3092106,23.7104931 L12.3186497,23.7024347 L12.3186497,23.7024347 L12.3225043,23.6906389 L12.340401,23.2611114 L12.337245,23.2485176 L12.337245,23.2485176 L12.3277531,23.2396597 L12.1430473,23.1473072 Z" id="MingCute" fill-rule="nonzero"></path>
-                                    <path d="M18.0606,3 C19.06399,3 19.9030348,3.74110593 20.040846,4.71894978 L20.0567,4.87524 L20.9317,18.8752 C21.0005696,19.9765391 20.1669484,20.91502 19.0846641,20.9945451 L18.9356,21 L5.06453,21 C3.96104826,21 3.07643699,20.1094034 3.06457634,19.0243078 L3.06843,18.8752 L3.94343,4.87524 C4.006016,3.8738735 4.79802055,3.08269925 5.78255543,3.00608524 L5.93953,3 L18.0606,3 Z M15,7 C14.48715,7 14.0644908,7.38604429 14.0067275,7.88337975 L14,8 C14,9.10457 13.1046,10 12,10 C10.8954,10 10,9.10457 10,8 C10,7.44772 9.55228,7 9,7 C8.44772,7 8,7.44772 8,8 C8,10.2091 9.79086,12 12,12 C14.2091,12 16,10.2091 16,8 C16,7.44772 15.5523,7 15,7 Z" id="形状" fill="#ffffff"></path>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                </svg>
-            </div>
-            <span class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
-                Mi <span class="text-blue-500">Pulpería</span>
-            </span>
+</head>
+
+<body
+    class="bg-grid-pattern text-slate-800 font-sans min-h-screen relative selection:bg-blue-100 selection:text-blue-900">
+
+
+    <!-- Background glow -->
+    <div class="fixed inset-0 bg-radial-glow pointer-events-none z-0"></div>
+
+    <!-- HEADER -->
+    <header class="relative z-10 w-full pt-7 sm:pt-8 px-5">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+
+            <!-- Logo -->
+            <a href="/" class="inline-flex items-center gap-3 group">
+
+                <div
+                    class="bg-black p-2.5 rounded-2xl shadow-lg flex items-center justify-center w-11 h-11 transition-transform duration-200 group-hover:scale-105">
+
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true">
+                        <path
+                            d="M18.06 3C19.064 3 19.903 3.741 20.041 4.719L20.057 4.875L20.932 18.875C21.001 19.977 20.167 20.915 19.085 20.995L18.936 21H5.065C3.961 21 3.076 20.109 3.065 19.024L3.068 18.875L3.943 4.875C4.006 3.874 4.798 3.083 5.783 3.006L5.94 3H18.06ZM15 7C14.487 7 14.064 7.386 14.007 7.883L14 8C14 9.105 13.105 10 12 10C10.895 10 10 9.105 10 8C10 7.448 9.552 7 9 7C8.448 7 8 7.448 8 8C8 10.209 9.791 12 12 12C14.209 12 16 10.209 16 8C16 7.448 15.552 7 15 7Z"
+                            fill="white" />
+                    </svg>
+
+                </div>
+
+                <span class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+                    Mi <span class="text-blue-500">Pulpería</span>
+                </span>
+
+            </a>
+
+            <!-- Header links -->
+            <nav class="hidden sm:flex items-center gap-5 text-sm font-medium text-slate-500">
+
+                <a href="#caracteristicas" class="hover:text-blue-600 transition-colors">
+                    Características
+                </a>
+
+                <a href="/mi-pulperia/soporte" class="hover:text-blue-600 transition-colors">
+                    Soporte
+                </a>
+
+            </nav>
+
         </div>
     </header>
 
-    <!-- Contenido Principal Centrado -->
-    <main class="relative z-10 flex-1 flex flex-col items-center justify-center px-4 max-w-5xl mx-auto w-full my-auto">
-        
-        <!-- Contenedor con la imagen -->
-        <div class="relative w-full max-w-3xl my-auto transition-transform duration-500 hover:scale-[1.01] flex justify-center">
-            <img 
-                src="./mi-pulperia.webp" 
-                alt="Punto de venta Mi Pulpería" 
-                class="w-full h-auto object-contain max-h-[55vh] sm:max-h-[60vh] drop-shadow-2xl"
-            />
-        </div>
 
-        <!-- Botón de Descarga directa para Windows -->
-        <div class="my-auto pt-2 pb-4 text-center">
-            <a 
-                href="https://github.com/axelestrada/mi-pulperia-releases/releases/download/v0.29.0/mi-pulperia-setup-0.29.0.exe" 
-                target="_blank"
-                class="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-base sm:text-lg px-8 py-3.5 rounded-2xl shadow-xl shadow-blue-500/25 transition-all duration-200 transform hover:-translate-y-0.5"
-            >
-                <i data-lucide="download" class="w-5 h-5"></i>
-                <span>Descargar para Windows</span>
-            </a>
-            <p class="text-xs text-slate-400 mt-2 flex items-center justify-center gap-1.5 font-medium">
-                <i data-lucide="monitor" class="w-3.5 h-3.5 text-slate-400"></i>
-                Compatible con Windows 10/11
-            </p>
-        </div>
+    <!-- MAIN -->
+    <main class="relative z-10 w-full">
+
+        <!-- HERO -->
+        <section class="max-w-6xl mx-auto px-5 pt-12 sm:pt-16 lg:pt-20">
+
+            <div class="text-center max-w-3xl mx-auto">
+
+                <div
+                    class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs sm:text-sm font-semibold mb-5">
+
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                    </span>
+
+                    Disponible para Windows
+
+                </div>
+
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-[1.05]">
+                    Tu pulpería,
+                    <span class="text-blue-600">más fácil de administrar.</span>
+                </h1>
+
+
+                <p class="mt-5 text-base sm:text-lg text-slate-500 leading-relaxed max-w-2xl mx-auto">
+                    Mi Pulpería es un punto de venta diseñado para pequeños comercios.
+                    Administra tus productos, inventario, ventas, clientes y fiado desde una
+                    aplicación sencilla para Windows.
+                </p>
+
+
+                <!-- CTA -->
+                <div class="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3">
+
+                    <a href="https://apps.microsoft.com/detail/TU_APP_ID" target="_blank" rel="noopener noreferrer"
+                        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-base px-7 py-3.5 rounded-2xl shadow-xl shadow-blue-500/25 transition-all duration-200 hover:-translate-y-0.5">
+
+                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+
+                        <span>Obtener en Microsoft Store</span>
+
+                    </a>
+
+
+                    <a href="/mi-pulperia/soporte"
+                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-base px-7 py-3.5 rounded-2xl border border-slate-200 shadow-sm transition-all duration-200">
+
+                        <i data-lucide="circle-help" class="w-5 h-5"></i>
+
+                        <span>Centro de soporte</span>
+
+                    </a>
+
+                </div>
+
+
+                <p class="mt-3 text-xs text-slate-400 flex items-center justify-center gap-1.5 font-medium">
+
+                    <i data-lucide="monitor" class="w-3.5 h-3.5"></i>
+
+                    Compatible con Windows 10 y Windows 11
+
+                </p>
+
+            </div>
+
+
+            <!-- APP PREVIEW -->
+            <div class="relative max-w-5xl mx-auto mt-10 sm:mt-14">
+
+                <!-- Glow -->
+                <div class="absolute -inset-6 bg-blue-200/30 blur-3xl rounded-full pointer-events-none"></div>
+
+                <div class="relative">
+
+                    <img src="./mi-pulperia.webp" alt="Interfaz de Mi Pulpería mostrando el punto de venta"
+                        class="w-full h-auto object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-[1.01]" />
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURES -->
+        <section id="caracteristicas" class="max-w-6xl mx-auto px-5 pt-20 sm:pt-24 pb-16">
+
+            <div class="text-center max-w-2xl mx-auto">
+
+                <p class="text-sm font-bold uppercase tracking-wider text-blue-600">
+                    Todo lo que necesitas
+                </p>
+
+                <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-950">
+                    Hecho para el día a día de tu negocio
+                </h2>
+
+                <p class="mt-3 text-slate-500">
+                    Sin configuraciones complicadas. Sin herramientas innecesarias.
+                    Solo lo que necesitas para administrar tu pulpería.
+                </p>
+
+            </div>
+
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+
+                <!-- Feature -->
+                <div class="glass rounded-2xl border border-slate-200/70 p-6 shadow-sm">
+
+                    <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                    </div>
+
+                    <h3 class="mt-4 font-bold text-slate-900">
+                        Punto de venta
+                    </h3>
+
+                    <p class="mt-2 text-sm text-slate-500 leading-relaxed">
+                        Registra tus ventas de forma rápida y sencilla.
+                    </p>
+
+                </div>
+
+
+                <!-- Feature -->
+                <div class="glass rounded-2xl border border-slate-200/70 p-6 shadow-sm">
+
+                    <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <i data-lucide="package" class="w-5 h-5"></i>
+                    </div>
+
+                    <h3 class="mt-4 font-bold text-slate-900">
+                        Inventario
+                    </h3>
+
+                    <p class="mt-2 text-sm text-slate-500 leading-relaxed">
+                        Controla productos, existencias y movimientos.
+                    </p>
+
+                </div>
+
+
+                <!-- Feature -->
+                <div class="glass rounded-2xl border border-slate-200/70 p-6 shadow-sm">
+
+                    <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <i data-lucide="users" class="w-5 h-5"></i>
+                    </div>
+
+                    <h3 class="mt-4 font-bold text-slate-900">
+                        Clientes y fiado
+                    </h3>
+
+                    <p class="mt-2 text-sm text-slate-500 leading-relaxed">
+                        Lleva el control de clientes y sus saldos pendientes.
+                    </p>
+
+                </div>
+
+
+                <!-- Feature -->
+                <div class="glass rounded-2xl border border-slate-200/70 p-6 shadow-sm">
+
+                    <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+                    </div>
+
+                    <h3 class="mt-4 font-bold text-slate-900">
+                        Reportes
+                    </h3>
+
+                    <p class="mt-2 text-sm text-slate-500 leading-relaxed">
+                        Consulta la información de tu negocio de forma clara.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA FINAL -->
+        <section class="max-w-4xl mx-auto px-5 pb-20 sm:pb-24">
+
+            <div
+                class="relative overflow-hidden rounded-3xl bg-slate-950 px-6 py-10 sm:px-10 sm:py-12 text-center shadow-2xl">
+
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-transparent to-transparent pointer-events-none">
+                </div>
+
+                <div class="relative">
+
+                    <div
+                        class="mx-auto w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/30">
+
+                        <i data-lucide="store" class="w-6 h-6 text-white"></i>
+
+                    </div>
+
+
+                    <h2 class="mt-5 text-2xl sm:text-3xl font-extrabold text-white">
+                        Empieza a administrar tu negocio de forma sencilla.
+                    </h2>
+
+
+                    <p class="mt-3 text-slate-400 max-w-xl mx-auto">
+                        Instala Mi Pulpería desde Microsoft Store y comienza a utilizar
+                        tu punto de venta en Windows.
+                    </p>
+
+
+                    <a href="https://apps.microsoft.com/detail/TU_APP_ID" target="_blank" rel="noopener noreferrer"
+                        class="mt-6 inline-flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-7 py-3.5 rounded-2xl transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-blue-600/20">
+
+                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+
+                        Obtener en Microsoft Store
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
 
     </main>
 
-    <!-- Footer Simple -->
-    <footer class="relative z-10 w-full py-3.5 text-center text-xs font-medium text-slate-500 border-t border-slate-200/60 bg-white/40 backdrop-blur-xs">
-        <p class="flex items-center justify-center gap-1">
-            Made with <i data-lucide="heart" class="w-3.5 h-3.5 text-red-500 fill-red-500"></i> by <a href="https://axelestrada.site" class="font-bold text-blue-500">Axel Estrada</a>
-        </p>
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 w-full border-t border-slate-200/70 bg-white/50 backdrop-blur-md">
+
+        <div class="max-w-6xl mx-auto px-5 py-7">
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-5">
+
+                <!-- Brand -->
+                <div class="flex items-center gap-2">
+
+                    <div class="bg-black p-1.5 rounded-lg flex items-center justify-center w-8 h-8">
+
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <path
+                                d="M18.06 3C19.064 3 19.903 3.741 20.041 4.719L20.057 4.875L20.932 18.875C21.001 19.977 20.167 20.915 19.085 20.995L18.936 21H5.065C3.961 21 3.076 20.109 3.065 19.024L3.068 18.875L3.943 4.875C4.006 3.874 4.798 3.083 5.783 3.006L5.94 3H18.06ZM15 7C14.487 7 14.064 7.386 14.007 7.883L14 8C14 9.105 13.105 10 12 10C10.895 10 10 9.105 10 8C10 7.448 9.552 7 9 7C8.448 7 8 7.448 8 8C8 10.209 9.791 12 12 12C14.209 12 16 10.209 16 8C16 7.448 15.552 7 15 7Z"
+                                fill="white" />
+                        </svg>
+
+                    </div>
+
+                    <span class="font-bold text-slate-900">
+                        Mi <span class="text-blue-500">Pulpería</span>
+                    </span>
+
+                </div>
+
+
+                <!-- Links -->
+                <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-slate-500">
+
+                    <a href="/mi-pulperia/soporte" class="hover:text-blue-600 transition-colors">
+                        Soporte
+                    </a>
+
+                    <a href="/mi-pulperia/privacidad" class="hover:text-blue-600 transition-colors">
+                        Privacidad
+                    </a>
+
+                    <a href="/mi-pulperia/terminos" class="hover:text-blue-600 transition-colors">
+                        Términos de uso
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="mt-6 pt-5 border-t border-slate-200/70 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-400">
+
+                <p>
+                    © 2026 Mi Pulpería. Todos los derechos reservados.
+                </p>
+
+                <p class="flex items-center gap-1">
+
+                    Made with
+
+                    <i data-lucide="heart" class="w-3.5 h-3.5 text-red-500 fill-red-500"></i>
+
+                    by
+
+                    <a href="https://axelestrada.site" target="_blank" rel="noopener noreferrer"
+                        class="font-semibold text-blue-500 hover:text-blue-600">
+                        Axel Estrada
+                    </a>
+
+                </p>
+
+            </div>
+
+        </div>
+
     </footer>
 
-    <!-- Scripts para inicializar iconos -->
+
+    <!-- Initialize Lucide -->
     <script>
         lucide.createIcons();
     </script>
+
+
 </body>
+
 </html>
